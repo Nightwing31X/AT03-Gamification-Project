@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +14,16 @@ public class NavigationWaypoint : InteractableObject
     private ParticleSystem particles;
     private Collider objectCollider;
     private AudioSource audioSource;
+
+    [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
+
+
+    public void TP_Location()
+    {
+        script.pic.SetActive(false);
+        script.ToggleMouseLook(true, true);
+        Activate();
+    }
 
     //Awake is executed before the Start method
     private void Awake()
@@ -28,7 +39,7 @@ public class NavigationWaypoint : InteractableObject
         }
 
         particles = GetComponentInChildren<ParticleSystem>();
-        if(particles == null) 
+        if(particles == null)
         {
             Debug.LogWarning($"{name} should have a particle system as a child!");
         }
@@ -52,6 +63,7 @@ public class NavigationWaypoint : InteractableObject
     /// Stops the particles and disables this objects collider.
     /// </summary>
     /// <returns></returns>
+
     public override bool Activate()
     {
         if (Interaction.Instance.CurrentWaypoint != this)
@@ -79,6 +91,7 @@ public class NavigationWaypoint : InteractableObject
         return false;
     }
 
+    
     /// <summary>
     /// Disables the currently active tooltip (if there is one) then re-enables this object's collider and starts the particles playing.
     /// </summary>
@@ -102,6 +115,6 @@ public class NavigationWaypoint : InteractableObject
             }
             return true;
         }
-        return false;
+        return false;  
     }
 }

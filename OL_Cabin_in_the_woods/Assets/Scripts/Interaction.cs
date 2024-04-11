@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 /// <summary>
 /// This class should be attached to the main camera.
 /// </summary>
@@ -14,11 +15,12 @@ public class Interaction : MonoBehaviour
     [SerializeField] private float reach;
     [Tooltip("Must reference the crosshair UI image.")]
     [SerializeField] private Image crosshair;
+    [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
 
-    /// <summary>
-    /// The player's current waypoint.
-    /// </summary>
-    public NavigationWaypoint CurrentWaypoint { get; set; }
+/// <summary>
+/// The player's current waypoint.
+/// </summary>
+public NavigationWaypoint CurrentWaypoint { get; set; }
     /// <summary>
     /// The player's currently active tooltip.
     /// </summary>
@@ -63,14 +65,17 @@ public class Interaction : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire1") == true)           //if interaction input is pressed
                 {
-                    if (interactable.Activate() == false)           //if item cannot be activated, it must already be active
+                    if (script.pic.activeInHierarchy == false)  //# Checks if the map is open
                     {
-                        interactable.Deactivate();                  //try deactivate the object instead
-                    }
+                        if (interactable.Activate() == false)           //if item cannot be activated, it must already be active
+                        {
+                            interactable.Deactivate();                  //try deactivate the object instead
+                        }
 
-                    if (debug == true)
-                    {
-                        Debug.DrawRay(transform.position, transform.forward * reach, Color.green, 0.25f);       //draw debug ray
+                        if (debug == true)
+                        {
+                            Debug.DrawRay(transform.position, transform.forward * reach, Color.green, 0.25f);       //draw debug ray
+                        }
                     }
                 }
             }

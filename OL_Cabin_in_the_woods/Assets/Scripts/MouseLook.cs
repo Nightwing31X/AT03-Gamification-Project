@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -13,11 +15,12 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private float drag;
     [Tooltip("The minimum and maximum angle that the camera can move on the y axis.")]
     [SerializeField] private Vector2 verticalClamp = new Vector2(-45, 70);
-    
+
     private Vector2 smoothing;
     private Vector2 result;
     private Transform character;
-    private bool mouseLookEnabled = false;
+    [SerializeField] private bool mouseLookEnabled = false;
+    [SerializeField] public GameObject pic;
 
     /// <summary>
     /// Use to turn mouse look on and off. To toggle cursor, use ToggleMouseLook method.
@@ -31,12 +34,12 @@ public class MouseLook : MonoBehaviour
         {
             character = transform.parent;
         }
-        else 
+        else
         {
             Debug.LogWarning($"{name} should be the child of an empty object!");
         }
 
-        if(transform.localPosition != Vector3.zero) 
+        if (transform.localPosition != Vector3.zero)
         {
             Debug.LogWarning($"{name} should have a local space of (0,0,0)!");
         }
@@ -46,7 +49,12 @@ public class MouseLook : MonoBehaviour
     private void Start()
     {
         ToggleMouseLook(true, true);
+        if (pic.activeInHierarchy == true)
+        {
+            pic.SetActive(false);
+        }
     }
+
 
     // Update is called once per frame
     private void Update()
@@ -63,6 +71,22 @@ public class MouseLook : MonoBehaviour
 
             transform.localRotation = Quaternion.AngleAxis(-result.y, Vector3.right);
             character.localRotation = Quaternion.AngleAxis(result.x, character.up);
+        }
+
+        // Check if the "M" key is pressed
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            //Debug.Log("M key pressed!");
+            if (pic.activeInHierarchy == false)
+            {
+                pic.SetActive(true);
+                ToggleMouseLook(false, true);
+            }
+            else
+            {
+                pic.SetActive(false);
+                ToggleMouseLook(true, true);
+            }
         }
     }
 
@@ -89,3 +113,5 @@ public class MouseLook : MonoBehaviour
         }
     }
 }
+
+
