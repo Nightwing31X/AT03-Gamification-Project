@@ -64,6 +64,12 @@ public class DigitalTooltip : InteractableObject
         transform.forward = Camera.main.transform.forward;
     }
 
+    public void audio_toggle()
+    {
+        Debug.Log("Pressed Button!");
+        // https://gamedev.stackexchange.com/questions/206816/interacting-with-world-space-ui 
+    }
+
     /// <summary>
     /// Disables the current tooltip (if there is one) then sets the background sprite and activates the tooltip text.
     /// </summary>
