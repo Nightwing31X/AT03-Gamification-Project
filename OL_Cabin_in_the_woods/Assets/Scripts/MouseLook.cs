@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
 /// This class should be attached to the main camera.
@@ -19,14 +20,17 @@ public class MouseLook : MonoBehaviour
     private Vector2 smoothing;
     private Vector2 result;
     private Transform character;
-    [SerializeField] private bool mouseLookEnabled = false;
-    [SerializeField] public GameObject pic;
+    private bool mouseLookEnabled = false;
+    [SerializeField] public GameObject player_hud;
+    [SerializeField] public GameObject map_menu;
+
 
     /// <summary>
     /// Use to turn mouse look on and off. To toggle cursor, use ToggleMouseLook method.
     /// </summary>
     public bool MouseLookEnabled { get { return mouseLookEnabled; } set { ToggleMouseLook(value); } }
 
+    
     //Awake is executed before the Start method
     private void Awake()
     {
@@ -45,13 +49,19 @@ public class MouseLook : MonoBehaviour
         }
     }
 
+
     // Start is called before the first frame update
     private void Start()
     {
         ToggleMouseLook(true, true);
-        if (pic.activeInHierarchy == true)
+        if (map_menu.activeInHierarchy == true)
         {
-            pic.SetActive(false);
+            // Reference to the PostProcessVolume 
+            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
+            map_menu.SetActive(false);
+            ppVolume.enabled = false;
+            player_hud.SetActive(true);
         }
     }
 
@@ -73,19 +83,26 @@ public class MouseLook : MonoBehaviour
             character.localRotation = Quaternion.AngleAxis(result.x, character.up);
         }
 
+        // Reference to the PostProcessVolume 
+        PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
         // Check if the "M" key is pressed
         if (Input.GetKeyDown(KeyCode.M))
         {
             //Debug.Log("M key pressed!");
-            if (pic.activeInHierarchy == false)
+            if (map_menu.activeInHierarchy == false)
             {
-                pic.SetActive(true);
+                ppVolume.enabled = true;
+                map_menu.SetActive(true);
                 ToggleMouseLook(false, true);
+                player_hud.SetActive(false);
             }
             else
             {
-                pic.SetActive(false);
+                map_menu.SetActive(false);
                 ToggleMouseLook(true, true);
+                ppVolume.enabled = false;
+                player_hud.SetActive(true);
             }
         }
     }

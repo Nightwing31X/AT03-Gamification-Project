@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
 /// This class should be attached to the objects used for navigation waypoints.
@@ -20,8 +21,14 @@ public class NavigationWaypoint : InteractableObject
 
     public void TP_Location()
     {
-        script.pic.SetActive(false);
-        script.ToggleMouseLook(true, true);
+        // Reference to the PostProcessVolume 
+        PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
+
+        script.map_menu.SetActive(false); // turns off map_menu
+        script.ToggleMouseLook(true, true); // turns off mouse
+        ppVolume.enabled = false; // turn off blur bg
+        script.player_hud.SetActive(true); // turn on hud    
         Activate();
     }
 
