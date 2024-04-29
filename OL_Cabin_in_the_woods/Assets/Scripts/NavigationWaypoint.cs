@@ -21,22 +21,22 @@ public class NavigationWaypoint : InteractableObject
 
     public void TP_Location()
     {
-        // Reference to the PostProcessVolume 
+        // Reference to the PostProcessVolume - blur bg effect
         PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
 
-        script.map_menu.SetActive(false); // turns off map_menu
-        script.ToggleMouseLook(true, true); // turns off mouse
-        ppVolume.enabled = false; // turn off blur bg
-        script.player_hud.SetActive(true); // turn on hud    
-        Activate();
+        script.map_menu.SetActive(false); //# Turns off map_menu
+        script.ToggleMouseLook(true, true); //# Turns off mouse
+        ppVolume.enabled = false; //# Turn off blur bg
+        script.player_hud.SetActive(true); //# Turn on HUD    
+        Activate(); //# Teleports the User to the location
     }
 
     //Awake is executed before the Start method
     private void Awake()
     {
         //Create necessary component references
-        if(TryGetComponent(out audioSource) == false) 
+        if (TryGetComponent(out audioSource) == false) 
         {
             Debug.LogWarning($"{name} needs an Audio Source attached to it!");
         }

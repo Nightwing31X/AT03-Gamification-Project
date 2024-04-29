@@ -65,7 +65,7 @@ public NavigationWaypoint CurrentWaypoint { get; set; }
 
                 if (Input.GetButtonDown("Fire1") == true)           //if interaction input is pressed
                 {
-                    if (script.map_menu.activeInHierarchy == false)  //# Checks if the map is open
+                    if (script.map_menu.activeInHierarchy == false)  //# Checks if the MapMenu is open
                     {
                         if (interactable.Activate() == false)           //if item cannot be activated, it must already be active
                         {

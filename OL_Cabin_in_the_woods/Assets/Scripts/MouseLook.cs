@@ -56,12 +56,12 @@ public class MouseLook : MonoBehaviour
         ToggleMouseLook(true, true);
         if (map_menu.activeInHierarchy == true)
         {
-            // Reference to the PostProcessVolume 
+            // Reference to the PostProcessVolume - blur bg effect
             PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
-            map_menu.SetActive(false);
-            ppVolume.enabled = false;
-            player_hud.SetActive(true);
+            map_menu.SetActive(false); //# Makes sure map_menu is off
+            ppVolume.enabled = false; //# Makes sure blur bg is off 
+            player_hud.SetActive(true); //# Makes sure HUD is on
         }
     }
 
