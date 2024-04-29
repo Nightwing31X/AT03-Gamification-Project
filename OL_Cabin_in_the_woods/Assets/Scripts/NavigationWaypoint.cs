@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class should be attached to the objects used for navigation waypoints.
@@ -29,12 +30,13 @@ public class NavigationWaypoint : InteractableObject
         script.ToggleMouseLook(true, true); //# Turns off mouse
         ppVolume.enabled = false; //# Turn off blur bg
         script.player_hud.SetActive(true); //# Turn on HUD    
-        Activate(); //# Teleports the User to the location
+        Activate(); //# Teleports the User to the location 
     }
 
     //Awake is executed before the Start method
     private void Awake()
     {
+        
         //Create necessary component references
         if (TryGetComponent(out audioSource) == false) 
         {
