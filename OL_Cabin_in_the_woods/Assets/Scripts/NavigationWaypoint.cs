@@ -19,12 +19,10 @@ public class NavigationWaypoint : InteractableObject
 
     [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
 
-
     public void TP_Location()
     {
         // Reference to the PostProcessVolume - blur bg effect
         PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
-
 
         script.map_menu.SetActive(false); //# Turns off map_menu
         script.ToggleMouseLook(true, true); //# Turns off mouse
@@ -36,7 +34,6 @@ public class NavigationWaypoint : InteractableObject
     //Awake is executed before the Start method
     private void Awake()
     {
-        
         //Create necessary component references
         if (TryGetComponent(out audioSource) == false) 
         {
@@ -65,6 +62,8 @@ public class NavigationWaypoint : InteractableObject
         {
             particles.Play();
         }
+
+
     }
 
     /// <summary>
@@ -75,6 +74,7 @@ public class NavigationWaypoint : InteractableObject
 
     public override bool Activate()
     {
+
         if (Interaction.Instance.CurrentWaypoint != this)
         {
             if (Interaction.Instance.CurrentWaypoint != null)
@@ -100,7 +100,6 @@ public class NavigationWaypoint : InteractableObject
         return false;
     }
 
-    
     /// <summary>
     /// Disables the currently active tooltip (if there is one) then re-enables this object's collider and starts the particles playing.
     /// </summary>

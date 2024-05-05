@@ -17,10 +17,12 @@ public class Interaction : MonoBehaviour
     [SerializeField] private Image crosshair;
     [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
 
-/// <summary>
-/// The player's current waypoint.
-/// </summary>
-public NavigationWaypoint CurrentWaypoint { get; set; }
+
+
+    /// <summary>
+    /// The player's current waypoint.
+    /// </summary>
+    public NavigationWaypoint CurrentWaypoint { get; set; }
     /// <summary>
     /// The player's currently active tooltip.
     /// </summary>
@@ -36,7 +38,7 @@ public NavigationWaypoint CurrentWaypoint { get; set; }
     private void Awake()
     {
         //initialise singleton pattern
-        if(Instance == null) 
+        if (Instance == null) 
         {
             Instance = this;
         }
@@ -47,7 +49,7 @@ public NavigationWaypoint CurrentWaypoint { get; set; }
 
         if(crosshair == null) 
         {
-            Debug.LogWarning($"Interaction needs a reference set for the crosshair image!");
+           Debug.LogWarning($"Interaction needs a reference set for the crosshair image!");
         }
     }
 
