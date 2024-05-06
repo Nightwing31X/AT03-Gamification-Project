@@ -18,6 +18,8 @@ public class NavigationWaypoint : InteractableObject
     private AudioSource audioSource;
 
     [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
+    [SerializeField] private GameObject First_thing;  //# Lets me reference things from another C# file
+
 
     public void TP_Location()
     {
@@ -61,9 +63,10 @@ public class NavigationWaypoint : InteractableObject
         if (particles != null)
         {
             particles.Play();
+            First_thing = GameObject.FindWithTag("start_particle");
+            Debug.LogWarning(First_thing.tag);
+            First_thing.GetComponent<ParticleSystem>().Stop();
         }
-
-
     }
 
     /// <summary>
@@ -74,6 +77,7 @@ public class NavigationWaypoint : InteractableObject
 
     public override bool Activate()
     {
+        First_thing.GetComponent<ParticleSystem>().Play();
 
         if (Interaction.Instance.CurrentWaypoint != this)
         {
