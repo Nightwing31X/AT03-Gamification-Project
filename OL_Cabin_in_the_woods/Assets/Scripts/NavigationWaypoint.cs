@@ -19,7 +19,9 @@ public class NavigationWaypoint : InteractableObject
 
     [SerializeField] private MouseLook script;  //# Lets me reference things from another C# file
     [SerializeField] private GameObject First_thing;  //# Lets me reference things from another C# file
+    
 
+    private float delayTime = 2f;
 
     public void TP_Location()
     {
@@ -31,6 +33,14 @@ public class NavigationWaypoint : InteractableObject
         ppVolume.enabled = false; //# Turn off blur bg
         script.player_hud.SetActive(true); //# Turn on HUD    
         Activate(); //# Teleports the User to the location 
+        Invoke("MyWaypointDelay", delayTime);
+    }
+
+    void MyWaypointDelay()
+    {
+        Debug.Log("Function Started");
+        //script.LookAtWaypoint();
+        Debug.Log("Function executed!");
     }
 
     //Awake is executed before the Start method
@@ -64,7 +74,7 @@ public class NavigationWaypoint : InteractableObject
         {
             particles.Play();
             First_thing = GameObject.FindWithTag("start_particle");
-            Debug.LogWarning(First_thing.tag);
+            //Debug.LogWarning(First_thing.tag);
             First_thing.GetComponent<ParticleSystem>().Stop();
         }
     }

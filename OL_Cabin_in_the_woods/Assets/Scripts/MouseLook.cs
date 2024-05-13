@@ -24,13 +24,18 @@ public class MouseLook : MonoBehaviour
     [SerializeField] public GameObject player_hud;
     [SerializeField] public GameObject map_menu;
 
+    //[SerializeField] private Transform Target;
 
     /// <summary>
     /// Use to turn mouse look on and off. To toggle cursor, use ToggleMouseLook method.
     /// </summary>
     public bool MouseLookEnabled { get { return mouseLookEnabled; } set { ToggleMouseLook(value); } }
 
-    
+    //public void LookAtWaypoint()
+    //{
+    //    transform.LookAt(Target);
+    //}
+
     //Awake is executed before the Start method
     private void Awake()
     {
