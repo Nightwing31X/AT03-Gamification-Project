@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -24,17 +25,15 @@ public class MouseLook : MonoBehaviour
     [SerializeField] public GameObject player_hud;
     [SerializeField] public GameObject map_menu;
 
-    //[SerializeField] private Transform Target;
+    // Getting the text animation
+    public Animator TextAnimONE;
+    public Animator TextAnimTWO;
 
     /// <summary>
     /// Use to turn mouse look on and off. To toggle cursor, use ToggleMouseLook method.
     /// </summary>
     public bool MouseLookEnabled { get { return mouseLookEnabled; } set { ToggleMouseLook(value); } }
 
-    //public void LookAtWaypoint()
-    //{
-    //    transform.LookAt(Target);
-    //}
 
     //Awake is executed before the Start method
     private void Awake()
@@ -68,8 +67,55 @@ public class MouseLook : MonoBehaviour
             ppVolume.enabled = false; //# Makes sure blur bg is off 
             player_hud.SetActive(true); //# Makes sure HUD is on
         }
+
+        StartCoroutine(FadingIn());
     }
 
+    IEnumerator Idle()
+    {
+        yield return new WaitForSeconds(0);
+
+        TextAnimONE.SetBool("TextIdle", true);
+        TextAnimONE.SetBool("TextFadeIn", false);
+        TextAnimONE.SetBool("TextFadeOut", false);
+
+        TextAnimTWO.SetBool("TextIdle", true);
+        TextAnimTWO.SetBool("TextFadeIn", false);
+    }
+
+
+    IEnumerator FadingIn()
+    {
+         if (TextAnimTWO.GetBool("TextFadeIn") == true)
+        {
+            TextAnimTWO.SetBool("TextIdle", false);
+            TextAnimTWO.SetBool("TextFadeIn", false);
+
+            yield return new WaitForSeconds(1);
+
+        }
+
+        yield return new WaitForSeconds(0);
+
+        TextAnimONE.SetBool("TextIdle", false);
+        TextAnimONE.SetBool("TextFadeIn", true);
+        TextAnimONE.SetBool("TextFadeOut", false);
+    }
+
+    IEnumerator FadingOut()
+    { 
+        yield return new WaitForSeconds(0);
+
+        TextAnimONE.SetBool("TextFadeIn", false);
+        TextAnimONE.SetBool("TextFadeOut", true);
+
+        yield return new WaitForSeconds(1);
+
+        TextAnimTWO.SetBool("TextIdle", false);
+        TextAnimTWO.SetBool("TextFadeIn", true);
+
+        yield return new WaitForSeconds(1);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -97,6 +143,8 @@ public class MouseLook : MonoBehaviour
             //Debug.Log("M key pressed!");
             if (map_menu.activeInHierarchy == false)
             {
+                StartCoroutine(Idle());
+
                 ppVolume.enabled = true;
                 map_menu.SetActive(true);
                 ToggleMouseLook(false, true);
@@ -108,6 +156,29 @@ public class MouseLook : MonoBehaviour
                 ToggleMouseLook(true, true);
                 ppVolume.enabled = false;
                 player_hud.SetActive(true);
+            }
+        }
+
+        // Check if the "I" key is pressed
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (map_menu.activeInHierarchy == false) // Checks if the Map Menu isn't open
+            { 
+                if (TextAnimTWO.GetBool("TextFadeIn") == true) // Checks if on Page 2 is Active
+                {
+                    StartCoroutine(Idle()); // After page 2 it disappears all text
+                }
+                else
+                {
+                    if (TextAnimONE.GetBool("TextFadeIn") == true) // Checks if Page 1 is Active
+                    {
+                        StartCoroutine(FadingOut()); // Hides Page 1 and shows Page 2
+                    }
+                    else
+                    {
+                        StartCoroutine(FadingIn()); // Shows Page 1
+                    }
+                }
             }
         }
     }

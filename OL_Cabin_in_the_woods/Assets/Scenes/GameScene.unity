@@ -1050,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &134362917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4540,7 +4540,7 @@ Transform:
   m_GameObject: {fileID: 543481548}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9518,7 +9518,7 @@ Transform:
   m_GameObject: {fileID: 558922495}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14663,6 +14663,8 @@ MonoBehaviour:
   verticalClamp: {x: -90, y: 90}
   player_hud: {fileID: 1033610288}
   map_menu: {fileID: 134362916}
+  TextAnimONE: {fileID: 2104891626}
+  TextAnimTWO: {fileID: 827655956}
 --- !u!114 &596709912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15292,7 +15294,7 @@ Transform:
   m_GameObject: {fileID: 658788965}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21471,7 +21473,7 @@ Animator:
   m_GameObject: {fileID: 827655954}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dab991b478f9dbf4a974e9af7b89a8c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05afb250087e21d4e85eeb2594440f49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -21515,7 +21517,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: The questions marks are tooltips you can LM on them to find more information.
+  m_Text: 'The questions marks are tooltips you can LM on them to find more information.
+
+
+    Click
+    (I) to close'
 --- !u!222 &827655958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22915,7 +22921,7 @@ Transform:
   m_GameObject: {fileID: 920443316}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29848,7 +29854,7 @@ Transform:
   m_GameObject: {fileID: 1357616885}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41119,7 +41125,7 @@ Transform:
   m_GameObject: {fileID: 1625168454}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47002,7 +47008,7 @@ Transform:
   m_GameObject: {fileID: 1690752146}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52000,7 +52006,7 @@ Transform:
   m_GameObject: {fileID: 1701331148}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57822,7 +57828,7 @@ Transform:
   m_GameObject: {fileID: 1978952205}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63681,8 +63687,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1033610289}
-  - {fileID: 134362917}
   - {fileID: 225400124}
+  - {fileID: 134362917}
   m_Father: {fileID: 277884853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -63832,8 +63838,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: The floating stars are called waypoints you can left click (LM) to move
+  m_Text: 'The floating stars are called waypoints you can left click (LM) to move
     there.
+
+
+    Click (I) for Next Page'
 --- !u!222 &2104891625
 CanvasRenderer:
   m_ObjectHideFlags: 0
